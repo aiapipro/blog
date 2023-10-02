@@ -2,10 +2,9 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs">
-      <a href="..">AI Glossary</a> &nbsp;»&nbsp;{{ .Title }}
-    </div>
-
+  <div class="breadcrumbs">
+    <a href="..">AI Glossary</a> &nbsp;»&nbsp;{{ .Title }}
+  </div>
     <h1 class="post-title">
       {{ .Title }}
       {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
@@ -24,22 +23,69 @@
 
   {{- if .Content }}
   <div class="post-content">
-    {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" .Content -}}
-    {{- else }}{{ .Content }}{{ end }}
-    
     <!-- Add AI Glossary entries -->
-    {{range where .Site.Pages "Type" "=" "glossary-entry"}} 
-      {{ .Content }} 
+    <script>
+      function search() {
+        // Declare variables
+        let inputValue = "{{ .Title}}"
+        let searchValue = document.getElementById('termSearch');
+        if (searchValue.value.length > 0){
+          inputValue=searchValue.value;
+        }
+        let filter = inputValue.toUpperCase().trim();
+        let li = document.querySelectorAll('.singleTerm');
+        let toc = document.querySelectorAll('.termTOC > div');
+        let noTermFound = document.getElementById('noTermFound');
+      
+        // Loop through all list items, and hide those who don't match the search query
+        let atLeastOneFound = false;
+        for (i = 0; i < toc.length; i++) {
+          let txtValue = toc[i].textContent || toc[i].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            toc[i].style.display = "";
+            atLeastOneFound = true;
+
+          } else {
+            toc[i].style.display = "none";
+          }
+        }
+        if (atLeastOneFound){
+          noTermFound.style.display = "none";
+
+        } else {
+          noTermFound.style.display = "";
+          }
+      }
+      window.addEventListener("load", (event) => {
+        search()
+      });
+      </script>
+    <div class="search" style="border:dotted black 2px ;padding:0.2em;">
+      <input type="text" id="termSearch" onkeyup="search()" style="width: 100%;" placeholder="Search for another AI term..">
+    <div id="noTermFound" style="display: none;">No single term found. Please search for something else</div>
+    <div id="terms">
+    {{ $sorted := sort .Site.Pages "Title" "asc" }}
+    <div class="termTOC">
+    {{range where $sorted "Layout" "=" "entry"}}
+    <div>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </div>
     {{ end }}
+  </div>
+  </div>
+  </div>
+  <div>
+    {{ .Content}}
+    </div>
+    
   </div>
   {{- end }}
 
   <footer class="post-footer">
-
-<div class="entry-license"> 
+<div class="license"> 
   The AI Glossary is licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>. Initial drafts of the explanations where done with the help of AI. Feel free to share and reuse it.
 </div>
+
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}
@@ -60,5 +106,5 @@
 
 </article>
 
-
 {{- end }}{{/* end main */}}
+

@@ -20,9 +20,7 @@
 
   {{- if .Content }}
   <div class="post-content">
-    {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" .Content -}}
-    {{- else }}{{ .Content }}{{ end }}
+    {{ .Content }}
 
     <!-- Add AI Glossary entries -->
     <script>
@@ -30,26 +28,17 @@
         // Declare variables
         let input = document.getElementById('termSearch');
         let filter = input.value.toUpperCase().trim();
-        let li = document.querySelectorAll('.singleTerm');
         let toc = document.querySelectorAll('.termTOC > div');
         let noTermFound = document.getElementById('noTermFound');
       
         // Loop through all list items, and hide those who don't match the search query
         let atLeastOneFound = false;
-        for (i = 0; i < li.length; i++) {
-          let txtValue = li[i].textContent || li[i].innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-            atLeastOneFound = true;
-
-          } else {
-            li[i].style.display = "none";
-          }
-        }
         for (i = 0; i < toc.length; i++) {
           let txtValue = toc[i].textContent || toc[i].innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             toc[i].style.display = "";
+            atLeastOneFound = true;
+
           } else {
             toc[i].style.display = "none";
           }
@@ -61,25 +50,26 @@
           noTermFound.style.display = "";
           }
       }
+      window.addEventListener("load", (event) => {
+        search()
+      });
       </script>
-    <hr>
-    <input type="text" id="termSearch" onkeyup="search()" placeholder="Search for a term..">
+    <div class="search" style="border:dotted black 2px ;padding:0.2em;">
+
+    <input type="text" id="termSearch" onkeyup="search()" style="width: 100%;" placeholder="Search for a term..">
     <div id="noTermFound" style="display: none;">No single term found. Please search for something else</div>
     <div id="terms">
     {{ $sorted := sort .Site.Pages "Title" "asc" }}
     <div class="termTOC">
     {{range where $sorted "Layout" "=" "entry"}}
     <div>
-      <a href="#{{ .Title }}">{{ .Title }}</a>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
     </div>
     {{ end }}
+    </div>
   </div>
-    {{range where $sorted "Layout" "=" "entry"}}
-    <div class="singleTerm" style="margin-bottom: 3em;" id="{{ .Title }}">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-        {{ .Content }} 
-      </div>
-    {{ end }}
+  <div>
+
   </div>
   </div>
   {{- end }}
