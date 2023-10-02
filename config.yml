@@ -1,6 +1,6 @@
 languageCode: en-us
 title: Blog | AI API Pro
-theme: "PaperMod"
+theme: "PaperModAIAPIPro"
 
 enableRobotsTXT: true
 buildDrafts: false
