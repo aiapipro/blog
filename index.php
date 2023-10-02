@@ -1,4 +1,4 @@
 <?php
-	header("Location: /blog",true,307);
+	header("Location: /academy",true,307);
 	die();
 ?>
