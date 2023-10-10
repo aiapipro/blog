@@ -1,6 +1,6 @@
 ---
 title: "Diffusion Model"
-date: 2023-09-16T08:12:23+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

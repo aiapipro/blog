@@ -1,6 +1,6 @@
 ---
 title: "AI Glossary"
-date: 2023-08-23T15:47:27+02:00
+
 draft: false
 type: "glossary"
 layout: "list"

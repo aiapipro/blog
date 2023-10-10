@@ -1,6 +1,6 @@
 ---
 title: "Lazy Learning"
-date: 2023-09-08T11:27:27+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

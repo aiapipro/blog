@@ -1,6 +1,6 @@
 ---
 title: "Binary Tree"
-date: 2023-10-02T11:11:11+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

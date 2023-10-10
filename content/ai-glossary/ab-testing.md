@@ -1,6 +1,6 @@
 ---
 title: "A/B Testing"
-date: 2023-10-02T13:33:33+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

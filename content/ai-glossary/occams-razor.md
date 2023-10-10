@@ -1,6 +1,6 @@
 ---
 title: "Occam's Razor"
-date: 2023-09-02T15:47:27+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

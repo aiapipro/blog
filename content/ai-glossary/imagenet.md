@@ -1,6 +1,6 @@
 ---
 title: "ImageNet"
-date: 2023-09-29T12:22:22+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

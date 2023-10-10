@@ -1,6 +1,6 @@
 ---
 title: "Retrieval-Augmented Generation"
-date: 2023-10-02T15:47:27+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

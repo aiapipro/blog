@@ -1,6 +1,6 @@
 ---
 title: "Zero-Shot Learning"
-date: 2023-10-01T15:47:27+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

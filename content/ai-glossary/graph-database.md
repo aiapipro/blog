@@ -1,6 +1,6 @@
 ---
 title: "Graph Database"
-date: 2023-09-25T19:52:21+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"

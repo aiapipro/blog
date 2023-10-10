@@ -1,6 +1,6 @@
 ---
 title: "Multi-Swarm Optimization"
-date: 2023-09-04T14:47:27+02:00
+
 draft: false
 type: "glossary"
 layout: "entry"
