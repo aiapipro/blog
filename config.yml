@@ -77,7 +77,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: Welcome to the AI API Pro blog. Right now only the [AI Glossary](/ai-glossary) exist, more content will follow soon!
+    Content: Welcome to the AI API Pro blog. Right now only the [AI News](https://news.aiapipro.com) site exists, and the rough skelleton of the [AI Glossary](/ai-glossary) exist, more content will follow soon!
 
   socialIcons:
     - name: github
@@ -97,7 +97,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/aiapipro/blog/content"
+    URL: "https://github.com/aiapipro/blog/tree/main/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
